@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="24.0" style="-fx-padding: 32;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ao.clinica.medica.controller.ConsultaController">
+    <children>
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Agenda &amp; Marcação de Consultas" styleClass="heading-1" />
+                <Label text="Gestão de horários, triagem de turnos e fluxos de atendimento." style="-fx-text-fill: #64748B; -fx-font-size: 14px;" />
+            </children>
+        </VBox>
+
+        <HBox spacing="24.0" VBox.vgrow="ALWAYS">
+            <children>
+
+                <VBox prefWidth="420.0" styleClass="card" spacing="15.0" HBox.hgrow="NEVER">
+                    <children>
+                        <Label text="Nova Consulta / Reserva" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" />
+                        <Separator style="-fx-opacity: 0.1;" />
+
+                        <VBox spacing="12.0">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Paciente Utente *" styleClass="label-custom" />
+                                        <ComboBox fx:id="cbPaciente" maxWidth="Infinity" promptText="Selecione o paciente..." styleClass="text-field-custom" />
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Médico Especialista *" styleClass="label-custom" />
+                                        <ComboBox fx:id="cbMedico" maxWidth="Infinity" promptText="Selecione o médico..." styleClass="text-field-custom" />
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Data do Atendimento *" styleClass="label-custom" />
+                                        <DatePicker fx:id="dpDataConsulta" maxWidth="Infinity" styleClass="text-field-custom" />
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Horário de Atendimento *" styleClass="label-custom" />
+                                        <TextField fx:id="txtHorario" promptText="Ex: 09:30" styleClass="text-field-custom" />
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Estado Inicial *" styleClass="label-custom" />
+                                        <ComboBox fx:id="cbStatus" maxWidth="Infinity" styleClass="text-field-custom" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <Separator style="-fx-opacity: 0.1;" />
+
+                        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="btnLimpar" onAction="#handleLimpar" text="Cancelar" style="-fx-background-color: #E2E8F0; -fx-text-fill: #475569; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 6; -fx-cursor: hand;" />
+                                <Button fx:id="btnSalvar" onAction="#handleSalvar" text="Agendar Consulta" styleClass="btn-primary" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="15.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <children>
+                                <Label text="Painel de Agendamentos Cadastrados" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+
+                        <TableView fx:id="tableConsultas" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" prefWidth="55.0" text="ID" />
+                                <TableColumn fx:id="colPaciente" prefWidth="180.0" text="Paciente" />
+                                <TableColumn fx:id="colMedico" prefWidth="180.0" text="Médico" />
+                                <TableColumn fx:id="colData" prefWidth="110.0" text="Data" />
+                                <TableColumn fx:id="colEstado" prefWidth="110.0" text="Estado" />
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="10.0" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="btnConfirmar" onAction="#handleConfirmar" text="Confirmar Presença" style="-fx-background-color: #ECFDF5; -fx-text-fill: #10B981; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6; -fx-cursor: hand;" />
+                                <Button fx:id="btnCancelar" onAction="#handleCancelar" text="Cancelar Consulta" style="-fx-background-color: #FFF1F2; -fx-text-fill: #F43F5E; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6; -fx-cursor: hand;" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+    </children>
+</VBox>

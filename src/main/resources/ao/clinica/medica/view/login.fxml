@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox fx:id="rootPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ao.clinica.medica.controller.LoginController">
+    <children>
+        <VBox alignment="CENTER" prefWidth="400.0" style="-fx-background-color: #0F172A;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="MEDIC-SYSTEM" style="-fx-text-fill: #FFFFFF; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+                <Label text="Gestão Integrada de Clínicas Médicas"
+                       style="-fx-text-fill: #94A3B8; -fx-font-size: 14px;"/>
+            </children>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" prefWidth="500.0" style="-fx-background-color: #F8FAFC;" spacing="20.0">
+            <padding>
+                <Insets bottom="40.0" left="60.0" right="60.0" top="40.0"/>
+            </padding>
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Autenticação" styleClass="heading-1"/>
+                        <Label text="Introduza as suas credenciais para aceder à plataforma."
+                               style="-fx-text-fill: #64748B;"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="Utilizador" styleClass="label-custom"/>
+                        <TextField fx:id="txtLogin" promptText="Ex: alberto.med" styleClass="text-field-custom"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="Palavra-passe" styleClass="label-custom"/>
+                        <PasswordField fx:id="txtSenha" promptText="••••••••" styleClass="text-field-custom"/>
+                    </children>
+                </VBox>
+
+                <Button fx:id="btnLogin" maxWidth="Infinity" onAction="#handleLogin" text="Entrar no Sistema"
+                        styleClass="btn-primary"/>
+
+                <Label fx:id="lblErro" text=""
+                       style="-fx-text-fill: #F43F5E; -fx-font-size: 13px; -fx-font-weight: bold;" alignment="CENTER"
+                       maxWidth="Infinity"/>
+            </children>
+        </VBox>
+    </children>
+</HBox>

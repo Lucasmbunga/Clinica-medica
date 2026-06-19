@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="768.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ao.clinica.medica.controller.DashboardController">
+
+    <left>
+        <VBox prefWidth="240.0" styleClass="sidebar">
+            <children>
+                <Label text="🏥 ClinicaMed" styleClass="sidebar-brand" />
+                <Separator style="-fx-opacity: 0.1;" />
+                <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button maxWidth="Infinity" text="📊 Dashboard Geral" styleClass="menu-button, menu-button-active" />
+                        <Button fx:id="btnPacientes" maxWidth="Infinity" text="👥 Gestão de Pacientes" styleClass="menu-button" onAction="#navegarPacientes" />
+                        <Button fx:id="btnMedicos" maxWidth="Infinity" text="🩺 Corpo Clínico" styleClass="menu-button" onAction="#navegarMedicos" />
+                        <Button fx:id="btnConsultas" maxWidth="Infinity" text="📅 Agenda &amp; Consultas" styleClass="menu-button" onAction="#navegarConsultas" />
+                        <Button fx:id="btnProntuarios" maxWidth="Infinity" text="📝 Prontuários Eletrónicos" styleClass="menu-button" onAction="#navegarProntuarios" />
+                    </children>
+                </VBox>
+                <Separator style="-fx-opacity: 0.1;" />
+                <HBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                    <children>
+                        <VBox>
+                            <children>
+                                <Label fx:id="lblNomeUsuario" text="Dr. Alberto Simão" style="-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 13px;" />
+                                <Label fx:id="lblPerfilUsuario" text="Perfil: Médico" style="-fx-text-fill: #64748B; -fx-font-size: 11px;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="24.0" style="-fx-padding: 32;">
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Visão Geral da Clínica" styleClass="heading-1" />
+                                <Label text="Acompanhamento operacional e triagem em tempo real." style="-fx-text-fill: #64748B; -fx-font-size: 14px;" />
+                            </children>
+                        </VBox>
+                        <Button text="+ Agendar Nova Consulta" styleClass="btn-primary" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="20.0">
+                    <children>
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Consultas Hoje" style="-fx-text-fill: #64748B; -fx-font-weight: bold;" />
+                                <Label text="24" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" />
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Pacientes Ativos" style="-fx-text-fill: #64748B; -fx-font-weight: bold;" />
+                                <Label text="1,248" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #0EA5E9;" />
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Aguardando Confirmação" style="-fx-text-fill: #64748B; -fx-font-weight: bold;" />
+                                <Label text="5" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #10B981;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="15.0">
+                    <children>
+                        <Label text="Próximos Atendimentos do Turno" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" />
+                        <TableView fx:id="tableConsultas" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="colHora" prefWidth="100.0" text="Horário" />
+                                <TableColumn fx:id="colPaciente" prefWidth="250.0" text="Paciente" />
+                                <TableColumn fx:id="colMedico" prefWidth="250.0" text="Médico Especialista" />
+                                <TableColumn fx:id="colStatus" prefWidth="150.0" text="Estado" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="24.0" style="-fx-padding: 32;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ao.clinica.medica.controller.PacienteController">
+    <children>
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Gestão de Pacientes" styleClass="heading-1" />
+                <Label text="Registo, atualização e localização geográfica de utentes." style="-fx-text-fill: #64748B; -fx-font-size: 14px;" />
+            </children>
+        </VBox>
+
+        <HBox spacing="24.0" VBox.vgrow="ALWAYS">
+            <children>
+
+                <VBox prefWidth="450.0" styleClass="card" spacing="15.0" HBox.hgrow="NEVER">
+                    <children>
+                        <Label text="Ficha Cadastral" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" />
+                        <Separator style="-fx-opacity: 0.1;" />
+
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" prefHeight="450.0">
+                            <content>
+                                <VBox spacing="12.0" style="-fx-padding: 0 10 0 0;">
+                                    <children>
+                                        <Label text="DADOS PESSOAIS" style="-fx-font-size: 11px; -fx-text-fill: #0EA5E9; -fx-font-weight: bold;" />
+
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Nome Completo *" styleClass="label-custom" />
+                                                <TextField fx:id="txtNome" promptText="Nome do paciente" styleClass="text-field-custom" />
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="CPF / Documento *" styleClass="label-custom" />
+                                                <TextField fx:id="txtCpf" promptText="000000000AA000" styleClass="text-field-custom" />
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Data de Nascimento *" styleClass="label-custom" />
+                                                <DatePicker fx:id="dpNascimento" maxWidth="Infinity" styleClass="text-field-custom" />
+                                            </children>
+                                        </VBox>
+
+                                        <Label text="ENDEREÇO RESIDENCIAL" style="-fx-font-size: 11px; -fx-text-fill: #0EA5E9; -fx-font-weight: bold; -fx-padding: 10 0 0 0;" />
+
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Rua" styleClass="label-custom" />
+                                                <TextField fx:id="txtRua" promptText="Ex: Rua Direita da Samba" styleClass="text-field-custom" />
+                                            </children>
+                                        </VBox>
+
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Bairro" styleClass="label-custom" />
+                                                        <TextField fx:id="txtBairro" promptText="Bairro" styleClass="text-field-custom" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Zona" styleClass="label-custom" />
+                                                        <TextField fx:id="txtZona" promptText="Zona" styleClass="text-field-custom" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Número da Casa" styleClass="label-custom" />
+                                                <TextField fx:id="txtNumeroCasa" promptText="Nº" styleClass="text-field-custom" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+
+                        <Separator style="-fx-opacity: 0.1;" />
+
+                        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="btnLimpar" onAction="#handleLimpar" text="Limpar" style="-fx-background-color: #E2E8F0; -fx-text-fill: #475569; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 6; -fx-cursor: hand;" />
+                                <Button fx:id="btnSalvar" onAction="#handleSalvar" text="Gravar Paciente" styleClass="btn-primary" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="15.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <children>
+                                <Label text="Pacientes Registados" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" HBox.hgrow="ALWAYS" />
+                                <TextField fx:id="txtPesquisa" promptText="🔍 Pesquisar por nome ou CPF..." styleClass="text-field-custom" prefWidth="250.0" />
+                            </children>
+                        </HBox>
+
+                        <TableView fx:id="tablePacientes" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" prefWidth="60.0" text="ID" />
+                                <TableColumn fx:id="colNome" prefWidth="220.0" text="Nome Completo" />
+                                <TableColumn fx:id="colCpf" prefWidth="130.0" text="CPF" />
+                                <TableColumn fx:id="colDataNasc" prefWidth="120.0" text="Nascimento" />
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="10.0" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="btnEditar" onAction="#handleEditar" text="Editar Selecionado" style="-fx-background-color: #F1F5F9; -fx-text-fill: #0EA5E9; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6; -fx-cursor: hand;" />
+                                <Button fx:id="btnExcluir" onAction="#handleExcluir" text="Remover" style="-fx-background-color: #FFF1F2; -fx-text-fill: #F43F5E; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6; -fx-cursor: hand;" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+    </children>
+</VBox>
